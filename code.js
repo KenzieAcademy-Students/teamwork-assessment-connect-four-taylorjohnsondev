@@ -27,5 +27,5 @@ function renderBoard() {
     });
     document.getElementById("board").append(gameTile);
   }
-}
+};
 renderBoard();
