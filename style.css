@@ -1,1 +1,45 @@
 /* Write your CSS Here. */
+h1 {
+  text-align: center;
+  color: black;
+}
+
+h2 {
+  text-align: center;
+  color: black;
+}
+
+body {
+  background-color: white;
+}
+
+#board {
+  background-color: lightgreen;
+  width: 560px;
+  height: 600px;
+  border: 5px solid green;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.column {
+  height: 70px;
+  width: 70px;
+  background-color: white;
+  border-radius: 50%;
+  border: 5px solid green;
+}
+.red-piece {
+  background-color: red;
+}
+
+.black-piece {
+  background-color: black;
+}
+
+#message {
+  text-align: center;
+  color: black;
+  padding-bottom: 50px;
+  font-size: 20px;
+}
