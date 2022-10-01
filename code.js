@@ -11,6 +11,8 @@ let board = [
 ];
 let currentPlayer = 1;
 
+	//Thank you Randy for the skeleton code
+
 let getRowCol = function (colNum) {
 	return [Math.floor(colNum / 7), colNum % 7];
 };
@@ -28,7 +30,6 @@ let columnIsFull = function (colNum) {
 };
 
 let insertPieceIntoModel = function (colNum, playerNum) {
-	// TODO: Implement this for real
 	const [r, c] = getRowCol(colNum);
 	board[r][c] = playerNum;
 };
@@ -125,51 +126,47 @@ let findDiagonalLeftWinner = function (boardModel) {
 	}
 	return -1;
 };
-let findDiagonalRightWinner = function (boardModel) {
-	// If it finds a diagonal right 4-in-a-row, return the player number of the winner
-	// If not, return -1
-	for (let i = 0; i < 3; i++) {
-		for (let j = 0; j < 4; j++) {
-			const c = boardModel[i][j];
-			if (c == 0) continue;
 
-			let count = 1;
-			for (let x = 1; x < 4; x++) {
-				if (boardModel[i + x][j + x] == c) {
-					count += 1;
-				} else break;
-			}
-			if (count == 4) return c;
-		}
-	}
-	return -1;
+
+let findDiagonalRightWinner = function (boardModel) {
+  // If it finds a diagonal right 4-in-a-row, return the player number of the winner
+  // If not, return -1
+  for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < 4; i++) {
+      const c = boardModel[j][i];
+      if (c == 0) continue;
+
+      let count = 1;
+      for (let x = 1; x < 4; x++) {
+        if (boardModel[j + x][i + x] == c) {
+          count += 1;
+        } else break;
+      }
+      if (count == 4) return c;
+    }
+  }
+  return -1;
 };
 
 let gameIsOver = function () {
-	// Look at the board model to see if there is either a winner or a tie
+  // Look at the board model to see if there is either a winner or a tie
 
-	let horizWinner = findHorizontalWinner(board);
-	let vertWinner = findVerticalWinner(board);
-	let diagLWinner = findDiagonalLeftWinner(board);
-	let diagRWinner = findDiagonalRightWinner(board);
-	// If any of these is not -1, then the value of that variable is the winner of the game, and the game is over.
+  let horizWinner = findHorizontalWinner(board);
+  let vertWinner = findVerticalWinner(board);
+  let diagLWinner = findDiagonalLeftWinner(board);
+  let diagRWinner = findDiagonalRightWinner(board);
+  // If any of these is not -1, then the value of that variable is the winner of the game, and the game is over.
 
-	// Returns true if there's a winner or a tie
-	// returns false if the game isn't over.
+  // Returns true if there's a winner or a tie
+  // returns false if the game isn't over.
 
-	if (
-		horizWinner != -1 ||
-		vertWinner != -1 ||
-		diagLWinner != -1 ||
-		diagRWinner != -1
-	)
-		return true;
-
-	if (gameIsTied(board)) {
-		displayMessage("Tie game!");
-		return true;
-	}
-	return false;
+  if (
+    horizWinner != -1 ||
+    vertWinner != -1 ||
+    diagLWinner != -1 ||
+    diagRWinner != -1
+  )
+    return true;
 };
 
 let togglePlayer = function () {
@@ -217,7 +214,6 @@ let dropPiece = function (eventObj) {
 
 let initializeGame = function () {
 	displayMessage("Next turn: Player " + currentPlayer);
-	// TODO: Set up a click handler for each column, use the function dropPiece as the event handler.
 	renderBoard();
 };
 
